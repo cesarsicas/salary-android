@@ -2,6 +2,7 @@ package com.cesarsicas.salary.Domains.Salary.Activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import com.cesarsicas.salary.R
@@ -19,28 +20,22 @@ class MainActivity : AppCompatActivity() {
         calculateSalaryButton.setOnClickListener {
             this.salary = salaryEditText.text.toString().toDouble()
 
+
+            val salaryCalculator = SalaryCalculator()
+
+            if(this.salary != null){
+
+                Log.wtf("Salario ", " "+salaryCalculator.calculateSalary(this.salary!!,2))
+
+            }
+
         }
 
     }
 
-    public fun calculateSalary(){
 
-    }
 
-    //IR
-    public fun calculateIncomeTax(){
 
-    }
-
-    //INSS
-    public fun calculateINSS(){
-
-    }
-
-    //other discounts
-    public fun calculateDiscounts(){
-
-    }
 
 
 }
