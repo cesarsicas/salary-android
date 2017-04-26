@@ -10,17 +10,25 @@ class SalaryCalculator {
 
     }
 
-    public fun calculateSalary(salary: Double, numberOfdependents: Int): Double {
+    public fun calculateSalary(salary: Double, numberOfdependents: Int): SalaryEntity {
 
         val inssRate = calculateInssRate(salary)
-        val salaryDiscountedInss = salary - calculateInssDiscount(salary, inssRate)
+        val inssDiscount =  calculateInssDiscount(salary, inssRate)
+        val salaryDiscountedInss = salary - inssDiscount
         val salaryDiscountedDependents = salaryDiscountedInss - calculateDependentsDiscount(numberOfdependents)
 
-        //val incomeRate = calculateIncomeRate(salaryDiscountedDependents)
-        val incomeDiscount = calculateIncomeDiscount(salaryDiscountedDependents)
+        val incomeRate = calculateIncomeRate(salaryDiscountedDependents)
+        val incomeDeduction = calculateIncomeDeduction(salaryDiscountedDependents)
+        val incomeDiscount = calculateIncomeDiscount(salaryDiscountedDependents, incomeRate, incomeDeduction )
+
         val finalSalary = salaryDiscountedInss - incomeDiscount
 
-        return finalSalary
+
+        return SalaryEntity(salary,
+                finalSalary,
+                inssDiscount,
+                incomeDiscount,
+                numberOfdependents)
 
 
     }
@@ -44,7 +52,7 @@ class SalaryCalculator {
 
     }
 
-    public fun calculateIncomeDiscount(salary:Double): Double {
+    public fun calculateIncomeDeduction(salary:Double): Double {
         when (salary) {
             in 0.0     .. 1903.98 -> return  0.0
             in 1903.99 .. 2826.65 -> return  142.80
@@ -58,6 +66,10 @@ class SalaryCalculator {
                 return Double.NEGATIVE_INFINITY
             }
         }
+    }
+
+    public fun calculateIncomeDiscount(salary:Double, incomeRate:Double, incomeDeduction:Double): Double {
+            return  ((salary*incomeRate)/100) - incomeDeduction
     }
 
     //INSS

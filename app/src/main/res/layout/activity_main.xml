@@ -14,24 +14,162 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Salário (R$)"
+            android:text="Salário Bruto (R$)"
             android:layout_gravity="center"
             android:gravity="center"
-            android:id="@+id/salaryTextView"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/salaryEditText"
-            android:hint="Digite seu salario"
+        <TextView
+            android:id="@+id/grossSalary"
+            android:text="00.00"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Dependentes"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/dependents"
+            android:text="0"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Salário Líquido (R$)"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/netSalary"
+            android:text="00.00"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Desconto INSS (R$)"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/inssDiscount"
+            android:text="00.00"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="IR (R$)"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/incomeDiscount"
+            android:text="R$ 00.00"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:text="Calcular Salario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/salaryEditText"
+            android:hint="Salario"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+
+
+        <EditText
+            android:id="@+id/dependentsEditText"
+            android:hint="Total Dependentes"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 

@@ -15,19 +15,19 @@ import org.junit.Assert.assertEquals
 class SalaryFinalTest {
 
 
-//    @Test
-//    fun salaryFinalTestCenaryA() {
-//        val salaryCalculator = SalaryCalculator()
-//        assertEquals(1820.00, salaryCalculator.calculateSalary(2000.0,0), 0.0001)
-//
-//    }
-//
-//    @Test
-//    fun salaryFinalTestCenaryB() {
-//        val salaryCalculator = SalaryCalculator()
-//        assertEquals(3815.93, salaryCalculator.calculateSalary(4500.0 , 2), 0.0001)
-//
-//    }
+    @Test
+    fun salaryFinalTestCenaryA() {
+        val salaryCalculator = SalaryCalculator()
+        assertEquals(1820.00, salaryCalculator.calculateSalary(2000.0,0).netSalary!!, 0.0001)
+
+    }
+
+    @Test
+    fun salaryFinalTestCenaryB() {
+        val salaryCalculator = SalaryCalculator()
+        assertEquals(1380.0, salaryCalculator.calculateSalary(1500.0 , 0).netSalary!!, 0.0001)
+
+    }
 
 
 

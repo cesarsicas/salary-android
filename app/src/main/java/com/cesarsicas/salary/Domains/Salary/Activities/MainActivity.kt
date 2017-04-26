@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.cesarsicas.salary.R
 
 class MainActivity : AppCompatActivity() {
-    var salary:Double?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,16 +17,32 @@ class MainActivity : AppCompatActivity() {
 
         val calculateSalaryButton = findViewById(R.id.calculateButton) as Button
         val salaryEditText = findViewById(R.id.salaryEditText) as EditText
+        val dependentsEditText = findViewById(R.id.dependentsEditText) as EditText
+
+
+        val grossSalaryTextView = findViewById(R.id.grossSalary) as TextView
+        val netSalaryTextView = findViewById(R.id.netSalary) as TextView
+        val inssDiscountTextView = findViewById(R.id.inssDiscount) as TextView
+        val incomeDiscountTextView = findViewById(R.id.incomeDiscount) as TextView
+        val dependentsTextView = findViewById(R.id.dependents) as TextView
 
         calculateSalaryButton.setOnClickListener {
-            this.salary = salaryEditText.text.toString().toDouble()
+            var grossSalary = salaryEditText.text.toString().toDouble()
+
+            var totalDependents = dependentsEditText.text.toString().toInt()
 
 
             val salaryCalculator = SalaryCalculator()
 
-            if(this.salary != null){
+            if(grossSalary != null){
 
-                Log.wtf("Salario ", " "+salaryCalculator.calculateSalary(this.salary!!,2))
+                var salaryEntity = salaryCalculator.calculateSalary(grossSalary!!,totalDependents)
+
+                grossSalaryTextView.text = salaryEntity.grossSalary.toString()
+                netSalaryTextView.text = salaryEntity.netSalary.toString()
+                inssDiscountTextView.text = salaryEntity.inssDiscount.toString()
+                incomeDiscountTextView.text = salaryEntity.incomeDiscont.toString()
+                dependentsTextView.text = salaryEntity.totalDependents.toString()
 
             }
 
