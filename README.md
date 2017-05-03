@@ -11,8 +11,9 @@ The following technollogies were used
   - Android
   - Kotlin
   - JUnit
+  - Mockito
  
-** Created for study purposes, if you like, you can follow me on Twitter @cesarsicas**
+**Created for study purposes, if you like it, you can follow me on Twitter @cesarsicas**
 
 
 # (Português) Calculadora de Salário Líquido
@@ -26,6 +27,7 @@ As seguintes tecnologias foram usadas:
   - Android
   - Kotlin
   - JUnit
+  - Mockito 
  
 **Criado para fins de estudo, se achar útil me dá um toque no Twitter @cesarsicas**
 
