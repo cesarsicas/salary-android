@@ -17,6 +17,11 @@ class SalaryRepository {
 
     }
 
+
+    public fun findSalary(id:Int): SalaryEntity {
+        return this.dao!!.findSalary(id)
+    }
+
     //... other data methods
 
 }
