@@ -1,4 +1,6 @@
-package com.cesarsicas.salary.Domains.Salary.Activities
+package com.cesarsicas.salary
+
+import com.cesarsicas.salary.SalaryEntity
 
 /**
  * Created by julio on 22/04/17.

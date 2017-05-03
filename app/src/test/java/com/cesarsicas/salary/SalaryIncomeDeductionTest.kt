@@ -1,7 +1,7 @@
 package com.cesarsicas.salary
 
 
-import com.cesarsicas.salary.Domains.Salary.Activities.SalaryCalculator
+import com.cesarsicas.salary.SalaryCalculator
 
 import org.junit.Test
 

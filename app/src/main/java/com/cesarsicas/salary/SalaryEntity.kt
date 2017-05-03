@@ -1,4 +1,4 @@
-package com.cesarsicas.salary.Domains.Salary.Activities
+package com.cesarsicas.salary
 
 /**
  * Created by julio on 25/04/17.
@@ -8,7 +8,7 @@ class SalaryEntity {
     var grossSalary:Double?=null
     var netSalary:Double?=null
     var inssDiscount:Double?=null
-    var incomeDiscont:Double?=null
+    var incomeDiscount:Double?=null
     var totalDependents:Int?=null
 
     constructor()
@@ -16,13 +16,13 @@ class SalaryEntity {
     constructor(grossSalary:Double,
                 netSalary:Double,
                 inssDiscount:Double,
-                incomeDiscont:Double,
+                incomeDiscount:Double,
                 totalDependents:Int){
 
         this.grossSalary = grossSalary
         this.netSalary= netSalary
         this.inssDiscount = inssDiscount
-        this.incomeDiscont = incomeDiscont
+        this.incomeDiscount = incomeDiscount
         this.totalDependents = totalDependents
 
     }

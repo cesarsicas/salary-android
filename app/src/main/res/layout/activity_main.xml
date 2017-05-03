@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.cesarsicas.salary.Domains.Salary.Activities.MainActivity">
+    tools:context="com.cesarsicas.salary.MainActivity">
 
 
     <LinearLayout
@@ -173,14 +173,30 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:id="@+id/calculateButton"
-        android:text="Calcular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <Button
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/calculateButton"
+            android:text="Calcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/persistDataButton"
+            android:text="Salvar Resultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
 
 
 
