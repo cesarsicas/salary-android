@@ -1,6 +1,6 @@
 package com.cesarsicas.salary
 
-import com.cesarsicas.salary.SalaryCalculator
+import com.cesarsicas.salary.Model.SalaryCalculator
 import org.junit.Test
 import org.junit.Assert.assertEquals
 

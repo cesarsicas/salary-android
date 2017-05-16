@@ -1,16 +1,17 @@
-package com.cesarsicas.salary
+package com.cesarsicas.salary.View
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.cesarsicas.salary.SalaryCalculator
+import com.cesarsicas.salary.Model.SalaryCalculator
 import com.cesarsicas.salary.R
+import com.cesarsicas.salary.SalaryEntity
+import com.cesarsicas.salary.SalaryRepository
 
 class MainActivity : AppCompatActivity() {
-    var salaryEntity:SalaryEntity?=null
+    var salaryEntity: SalaryEntity?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
