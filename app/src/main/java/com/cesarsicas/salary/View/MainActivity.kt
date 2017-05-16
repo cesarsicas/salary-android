@@ -5,60 +5,78 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.cesarsicas.salary.Model.SalaryCalculator
+import android.widget.Toast
+import com.cesarsicas.salary.Main.Interfaces.MVP
+import com.cesarsicas.salary.Presenter.PresenterImpl
 import com.cesarsicas.salary.R
-import com.cesarsicas.salary.SalaryEntity
-import com.cesarsicas.salary.SalaryRepository
+import com.cesarsicas.salary.Main.Entities.SalaryEntity
 
-class MainActivity : AppCompatActivity() {
-    var salaryEntity: SalaryEntity?=null
+class MainActivity : AppCompatActivity(), MVP.ViewInterface {
+
+
+    var grossSalaryTextView:TextView?=null
+    var netSalaryTextView:TextView?=null
+    var inssDiscountTextView:TextView?=null
+    var incomeDiscountTextView:TextView?=null
+    var dependentsTextView:TextView?=null
+    var calculateSalaryButton:Button?=null
+    var persistDataButton:Button?=null
+    var salaryEditText:EditText?=null
+    var dependentsEditText:EditText?=null
+    var presenter:PresenterImpl?=null
+    var salaryEntityResult: SalaryEntity?=null
+
+
+     override fun updateViewsWithValues(salaryEntity: SalaryEntity?):Unit {
+        salaryEntityResult = salaryEntity
+        grossSalaryTextView?.text = salaryEntity?.grossSalary.toString()
+        netSalaryTextView?.text = salaryEntity?.netSalary.toString()
+        inssDiscountTextView?.text = salaryEntity?.inssDiscount.toString()
+        incomeDiscountTextView?.text = salaryEntity?.incomeDiscount.toString()
+        dependentsTextView?.text = salaryEntity?.totalDependents.toString()
+    }
+
+
+    override fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val calculateSalaryButton = findViewById(R.id.calculateButton) as Button
-        val persistDataButton = findViewById(R.id.persistDataButton) as Button
 
-        val salaryEditText = findViewById(R.id.salaryEditText) as EditText
-        val dependentsEditText = findViewById(R.id.dependentsEditText) as EditText
+        grossSalaryTextView =findViewById(R.id.grossSalary) as TextView
+        netSalaryTextView =findViewById(R.id.netSalary) as TextView
+        inssDiscountTextView =findViewById(R.id.inssDiscount) as TextView
+        incomeDiscountTextView =findViewById(R.id.grossSalary) as TextView
+        dependentsTextView =findViewById(R.id.dependents) as TextView
 
-
-        val grossSalaryTextView = findViewById(R.id.grossSalary) as TextView
-        val netSalaryTextView = findViewById(R.id.netSalary) as TextView
-        val inssDiscountTextView = findViewById(R.id.inssDiscount) as TextView
-        val incomeDiscountTextView = findViewById(R.id.incomeDiscount) as TextView
-        val dependentsTextView = findViewById(R.id.dependents) as TextView
-
-        calculateSalaryButton.setOnClickListener {
-            var grossSalary = salaryEditText.text.toString().toDouble()
-
-            var totalDependents = dependentsEditText.text.toString().toInt()
+        calculateSalaryButton = findViewById(R.id.calculateButton) as Button
+        persistDataButton = findViewById(R.id.persistDataButton) as Button
+        salaryEditText = findViewById(R.id.salaryEditText) as EditText
+        dependentsEditText = findViewById(R.id.dependentsEditText) as EditText
 
 
-            val salaryCalculator = SalaryCalculator()
+        if(presenter == null){
+            presenter = PresenterImpl()
+        }
 
-            if(grossSalary != null){
+        presenter?.setView(this)
 
-                salaryEntity = salaryCalculator.calculateSalary(grossSalary!!,totalDependents)
+        calculateSalaryButton?.setOnClickListener {
 
-                grossSalaryTextView.text = salaryEntity?.grossSalary.toString()
-                netSalaryTextView.text = salaryEntity?.netSalary.toString()
-                inssDiscountTextView.text = salaryEntity?.inssDiscount.toString()
-                incomeDiscountTextView.text = salaryEntity?.incomeDiscount.toString()
-                dependentsTextView.text = salaryEntity?.totalDependents.toString()
+            var grossSalary = salaryEditText?.text.toString().toDouble()
+            var totalDependents = dependentsEditText?.text.toString().toInt()
 
-            }
+            presenter?.calculateSalary(grossSalary,totalDependents)
+
 
         }
 
-
-        persistDataButton.setOnClickListener {
-            if(salaryEntity != null){
-                SalaryRepository().saveSalary(salaryEntity!!)
-
-            }
-
+        persistDataButton?.setOnClickListener {
+            presenter?.addSalary(salaryEntityResult)
         }
 
     }

@@ -1,16 +1,16 @@
 package com.cesarsicas.salary.Model
 
-import com.cesarsicas.salary.Interfaces.MVP
-import com.cesarsicas.salary.SalaryEntity
+import com.cesarsicas.salary.Main.Core.Config
+import com.cesarsicas.salary.Main.Interfaces.MVP
+import com.cesarsicas.salary.Main.Entities.SalaryEntity
 
 /**
  * Created by julio on 22/04/17.
  */
-class SalaryCalculator: MVP.ModelImpl {
+class SalaryCalculator: MVP.SalaryCalculatorInterface {
     val dependentsDiscount:Double = Config.dependentsDiscount
 
-    constructor(){
-    }
+    constructor()
 
     override fun calculateSalary(salary: Double, numberOfdependents: Int): SalaryEntity {
 

@@ -1,4 +1,4 @@
-package com.cesarsicas.salary
+package com.cesarsicas.salary.Main.Entities
 
 /**
  * Created by julio on 25/04/17.
