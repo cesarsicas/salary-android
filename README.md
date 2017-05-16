@@ -1,17 +1,19 @@
 
 # (English) Brazilian Salary Calculator 
 
-Android aplication that calcultate the net salary, using Gross Salary and number of dependents. This app also show:
+Android application that calculate the net salary, using Gross Salary and number of dependents. This app also show:
 
   - Income taxes Discount
   - INSS Discounts
  
-The following technollogies were used
+The following technologies were used
 
   - Android
   - Kotlin
   - JUnit
   - Mockito
+
+ The MVP pattern was used too.
  
 **Created for study purposes, if you like it, you can follow me on Twitter @cesarsicas**
 
@@ -28,6 +30,8 @@ As seguintes tecnologias foram usadas:
   - Kotlin
   - JUnit
   - Mockito 
- 
+
+ Também foi aplicado o padrão MVP
+
 **Criado para fins de estudo, se achar útil me dá um toque no Twitter @cesarsicas**
 
