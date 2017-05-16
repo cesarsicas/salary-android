@@ -1,18 +1,18 @@
-package com.cesarsicas.salary
+package com.cesarsicas.salary.Model
 
-import com.cesarsicas.salary.SalaryEntity
+import com.cesarsicas.salary.Main.Core.Config
+import com.cesarsicas.salary.Main.Interfaces.MVP
+import com.cesarsicas.salary.Main.Entities.SalaryEntity
 
 /**
  * Created by julio on 22/04/17.
  */
-class SalaryCalculator {
-    val dependentsDiscount = 199.07
+class SalaryCalculator: MVP.SalaryCalculatorInterface {
+    val dependentsDiscount:Double = Config.dependentsDiscount
 
-    constructor(){
+    constructor()
 
-    }
-
-    public fun calculateSalary(salary: Double, numberOfdependents: Int): SalaryEntity {
+    override fun calculateSalary(salary: Double, numberOfdependents: Int): SalaryEntity {
 
         val inssRate = calculateInssRate(salary)
         val inssDiscount =  calculateInssDiscount(salary, inssRate)
@@ -36,7 +36,7 @@ class SalaryCalculator {
     }
 
     //used only for the companies, not necessary for salary calc
-    public fun calculateIncomeRate(salary:Double): Double {
+    override fun calculateIncomeRate(salary:Double): Double {
 
         when (salary) {
             in 0.0     .. 1903.98 -> return  0.0
@@ -54,7 +54,7 @@ class SalaryCalculator {
 
     }
 
-    public fun calculateIncomeDeduction(salary:Double): Double {
+    override fun calculateIncomeDeduction(salary:Double): Double {
         when (salary) {
             in 0.0     .. 1903.98 -> return  0.0
             in 1903.99 .. 2826.65 -> return  142.80
@@ -70,12 +70,12 @@ class SalaryCalculator {
         }
     }
 
-    public fun calculateIncomeDiscount(salary:Double, incomeRate:Double, incomeDeduction:Double): Double {
+    override fun calculateIncomeDiscount(salary:Double, incomeRate:Double, incomeDeduction:Double): Double {
             return  ((salary*incomeRate)/100) - incomeDeduction
     }
 
     //INSS
-    public fun calculateInssRate(salary:Double): Double {
+    override fun calculateInssRate(salary:Double): Double {
         when (salary) {
             in 937.00     .. 1659.38 -> return  8.0
             in 1659.39 .. 2765.66 -> return  9.0
@@ -94,12 +94,12 @@ class SalaryCalculator {
     }
 
     //INSS discount
-    public fun calculateInssDiscount(salary:Double, inssRate:Double): Double {
+    override fun calculateInssDiscount(salary:Double, inssRate:Double): Double {
         return  if(salary < 5531.31) (salary*inssRate)/100 else (5531.31)*11/100
 
     }
 
-    public fun calculateDependentsDiscount(numberOfdependents:Int): Double {
+    override fun calculateDependentsDiscount(numberOfdependents:Int): Double {
         return this.dependentsDiscount * numberOfdependents
 
     }

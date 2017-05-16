@@ -1,14 +1,14 @@
-package com.cesarsicas.salary
+package com.cesarsicas.salary.Model
 
-/**
- * Created by julio on 5/3/17.
- */
-class SugarDatabaseSalaryDao : SalaryDao {
+import com.cesarsicas.salary.Main.Interfaces.SalaryDaoInterface
+import com.cesarsicas.salary.Main.Entities.SalaryEntity
+
+class SugarSalaryDaoImpl : SalaryDaoInterface {
     override fun addSalary(salary: SalaryEntity): Boolean {
         return true
     }
 
-    override fun saveSalary(salary: SalaryEntity): Boolean {
+    override fun updateSalary(salary: SalaryEntity): Boolean {
         return true
     }
 
